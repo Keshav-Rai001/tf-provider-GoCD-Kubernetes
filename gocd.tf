@@ -1,7 +1,8 @@
-provider "kubernetes" 
-{
- host = "${var.kubernetes_ip}"  
-
+provider "kubernetes" {
+  host                   = "${var.kubernetes_ip}"
+  config_context_cluster = "mycluster.icp"
+  token                  = "${var.k8s_token}"
+  insecure               = "true"
 }
 
 resource "kubernetes_service" "test_service" {
@@ -23,25 +24,23 @@ resource "kubernetes_service" "test_service" {
   }
 }
 
-resource "kubernetes_pod" "gocd" 
-{
- metadata 
- {
-   name = "gocd-example"    labels
-   {
-     app = "gocd"
-   }
- }  
- spec
-  {
-   container
-    {
-     image = "gocd/gocd-server:v18.8.0"
-     name  = "example"      
-     port 
-     {
-       container_port = 80
-     }
-   }
- }
+resource "kubernetes_pod" "gocd" {
+  metadata {
+    name = "gocd-example"
+
+    labels {
+      app = "gocd"
+    }
+  }
+
+  spec {
+    container {
+      image = "gocd/gocd-server:v18.8.0"
+      name  = "example"
+
+      port {
+        container_port = 80
+      }
+    }
+  }
 }
