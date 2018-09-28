@@ -13,5 +13,5 @@ variable "k8s_config_context_cluster" {
 
 variable "pod_name" {
   description = "Name of kubernets service/pod"
-  default     = "GoCD-pod"
+  default     = "goCD-pod"
 }
