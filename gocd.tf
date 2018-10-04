@@ -39,7 +39,7 @@ resource "kubernetes_pod" "gocd" {
       name  = "example"
 
       port {
-        container_port = 80
+        container_port = 443
       }
     }
   }
