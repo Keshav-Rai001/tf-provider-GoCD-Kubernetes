@@ -35,7 +35,7 @@ resource "kubernetes_pod" "gocd" {
 
   spec {
     container {
-      image = "gocd/gocd-server:v18.9.0"
+      image = "gocd/gocd-server:v18.8.0"
       name  = "example"
 
       port {
