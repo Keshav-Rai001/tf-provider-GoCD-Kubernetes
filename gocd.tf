@@ -16,8 +16,8 @@ resource "kubernetes_service" "test_service" {
     }
 
     port {
-      port        = 8154
-      target_port = 8154
+      port        = 8153
+      target_port = 8153
     }
 
     type = "NodePort"
@@ -35,11 +35,11 @@ resource "kubernetes_pod" "gocd" {
 
   spec {
     container {
-      image = "gocd/gocd-server:v18.8.0"
+      image = "gocd/gocd-server:v18.9.0"
       name  = "example"
 
       port {
-        container_port = 443
+        container_port = 80
       }
     }
   }
